@@ -1,0 +1,523 @@
+x
+solve(s)
+solve(x)
+x<-matrix(c(1,2,4,4,3,1:20),5,5)
+x
+solve(x)
+x<-matrix(1:4,2,2)
+x
+solve(x)
+makeVector <- function(x = numeric()) {#
+        m <- NULL#
+        set <- function(y) {#
+                x <<- y#
+                m <<- NULL#
+        }#
+        get <- function() x#
+        setmean <- function(mean) m <<- mean#
+        getmean <- function() m#
+        list(set = set, get = get,#
+             setmean = setmean,#
+             getmean = getmean)#
+}
+makeVector(10)
+x
+makeVector(30)
+cachemean <- function(x, ...) {#
+        m <- x$getmean()#
+        if(!is.null(m)) {#
+                message("getting cached data")#
+                return(m)#
+        }#
+        data <- x$get()#
+        m <- mean(data, ...)#
+        x$setmean(m)#
+        m#
+}
+cachemean(27)
+cachemeane
+cachemeane()
+cachemean()
+cachemean(2)
+makeVector(12)
+str(setVector)
+str(makeVector)
+makeVector(1:10)
+v<-makeVector(1:20)
+v
+cacheMean(v)
+cachemean <- function(x, ...) {#
+        m <- x$getmean()#
+        if(!is.null(m)) {#
+                message("getting cached data")#
+                return(m)#
+        }#
+        data <- x$get()#
+        m <- mean(data, ...)#
+        x$setmean(m)#
+        m#
+}
+cachemean(v)
+makeVector(1:100)
+v<-makeVector(1:1000)
+cachemean(v)
+v<-makeVector(c(1,2,5,10))
+cachemean(v)
+set.seed(1)#
+rpois(5, 2)
+set.seed(10)#
+x <- rbinom(10, 10, 0.5)#
+e <- rnorm(10, 0, 20)#
+y <- 0.5 + 2 * x + e
+plot(x,y)
+set.seed(1)#
+rpois(5, 2)
+set.seed(1)#
+rpois(16, 2)
+set.seed(1)#
+rpois(16, 5)
+set.seed(1)#
+rpois(16, 10)
+?rpois
+## These functions creates a special "matrix" object that can cache its inverse. #
+## #
+#
+## This function creates a square matrix, and its inverse#
+makeCacheMatrix <- function(x = matrix()) {#
+  t<-x^2	##t sets the number of elements required for the matrix#
+  m<-matrix(rpois(t,20),x,x) # matrix is formed using integers randomly selected using poisson distribution#
+  i <- NULL#
+  set <- function(y) {#
+    m <<- y#
+    i <<- NULL#
+  }			#sends values to cache#
+  get<- function() m#
+  setinverse <- solve(m)#
+  getinverse <- function() m#
+  list(set = set, get = get,#
+       setinverse = setinverse,#
+       getinverse = getinverse)#
+}#
+#
+## Write a short comment describing this function#
+#
+cacheSolve <- function(x, ...) {#
+        ## Return a matrix that is the inverse of 'x'#
+}
+makeCacheMatrix(3)
+makeCacheMatrix <- function(x = matrix()) {#
+  +   t<-x^2  ##t sets the number of elements required for the matrix#
+  +   m<-matrix(rpois(t,20),x,x) # matrix is formed using integers randomly selected using poisson distribution#
+  +   #
+    +   i <- NULL#
+  +   set <- function(y) {#
+    +     m <<- y#
+    +     i <<- NULL#
+    +   }			#sends values to cache#
+  +   get<- function() m#
+  +   setinverse <- solve(m)#
+  +   getinverse <- function() m#
+  +   list(set = set, get = get,#
+           +        setinverse = setinverse,#
+           +        getinverse = getinverse)#
+  +   #
+    + }#
+> #
+  > ## Write a short comment describing this function#
+  > #
+  > cacheSolve <- function(x, ...) {#
+    +         ## Return a matrix that is the inverse of 'x'#
+      + }
+## These functions creates a special "matrix" object that can cache its inverse. #
+## #
+#
+## This function creates a square matrix, and its inverse#
+makeCacheMatrix <- function(x = matrix()) {#
+  t<-x^2	##t sets the number of elements required for the matrix#
+  m<-matrix(rpois(t,20),x,x) # matrix is formed using integers randomly selected using poisson distribution#
+  i <- NULL#
+  set <- function(y) {#
+    m <<- y#
+    i <<- NULL#
+  }			#sends values to cache#
+  get<- function() m#
+  setinverse <- solve(m)#
+  getinverse <- function() m#
+  list(set = set, get = get,#
+       setinverse = setinverse,#
+       getinverse = getinverse)#
+}#
+#
+## Write a short comment describing this function#
+#
+cacheSolve <- function(x, ...) {#
+        ## Return a matrix that is the inverse of 'x'#
+}
+makeCacheMatrix(2)
+y<makeCacheMatrix(3)
+y<-makeCacheMatrix(3)
+y
+cacheSolve <- function(x, ...) {#
+  m <- x$getinverse()#
+  if(!is.null(m)) {#
+    message("getting cached data")#
+    return(m)#
+  }#
+  data <- x$get()#
+  m <- solve(data)#
+  x$setinverse(m)#
+  m#
+}
+cacheSolve(y)
+cacheSolve <- function(x, ...) {#
+  m <- x$setinverse()#
+  if(!is.null(m)) {#
+    message("getting cached data")#
+    return(m)#
+  }#
+  data <- x$get()#
+  m <- solve(data)#
+  x$setinverse(m)#
+  m#
+}
+cacheSolve(y)
+cacheSolve <- function(x, ...) {#
+  m <- x$setinverse#
+  if(!is.null(m)) {#
+    message("getting cached data")#
+    return(m)#
+  }#
+  data <- x$get()#
+  m <- solve(data)#
+  x$setinverse(m)#
+  m#
+}
+cacheSolve(y)
+cacheSolve <- function(x, ...) {#
+  m <- x$setinverse#
+  if(!is.null(m)) {#
+    message("getting cached data")#
+    return(m)#
+  }#
+  data <- x$get()#
+  m <- solve(data)#
+  x$setinverse(m)#
+  m#
+}
+cacheSolve(y)
+y<-makeCacheMatrix(10)
+cacheSolve(y)
+> cacheSolve <- function(x, ...) {#
++         ## Return a matrix that is the inverse of 'x'#
+ m <- x$setinverse#
+  if(!is.null(m)) {#
+    message("getting cached data")#
+    return(m)#
+  }#
+  data <- x$get()#
+  m <- solve(data)#
+  x$setinverse(m)#
+  m #
+}
+cacheSolve <- function(x, ...) {#
+  m <- x$setinverse#
+  if(!is.null(m)) {#
+    message("getting cached data")#
+    return(m)#
+  }#
+  data <- x$get()#
+  m <- solve(data)#
+  x$setinverse(m)#
+  m#
+}
+cacheSolve <- function(x, ...) {#
+		## Return a matrix that is the inverse of 'x'#
+  m <- x$setinverse#
+  if(!is.null(m)) {#
+    message("getting cached data")#
+    return(m)#
+  }#
+  data <- x$get()#
+  m <- solve(data)#
+  x$setinverse(m)#
+  m#
+}
+cacheSolve(y)
+cacheSolve <- function(x, ...) {#
+		## Return a matrix that is the inverse of 'x'#
+  m <- x$setinverse#
+  if(!is.null(m)) {#
+    message("getting cached data")#
+    return(m)#
+  }#
+  data <- x$get()#
+  m <- solve(data)#
+  x$setinverse(m)#
+  m#
+}
+cacheSolve(y)
+y<-makeCacheMatrix(3)
+cacheSolve(y)
+setwd("~/Desktop/Data Specialisation/ExploreData")#
+log<-read.table("household_power_consumption.txt",sep=";",header=T)#
+#
+log$Date<-as.character(log$Date)#
+log$Time<-as.character(log$Time)#
+#
+library(chron)#
+#
+log$Date<-chron(dates.=log$Date,format=c(dates="d/m/y"))#
+log$Time<-chron(times.=log$Time,format=c("h:m:s"))#
+#
+Sel.Time <- subset(log, Date>="01/02/2007" & Date<="02/02/2007")#
+Sel.Time$Global_active_power<-as.character(Sel.Time$Global_active_power)#
+Sel.Time$Global_active_power<-as.numeric(Sel.Time$Global_active_power)#
+#
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+?png
+png(filename = "Plot1.png",#
+    width = 480, height = 480, units = "px")
+dev.off()
+setwd("~/Desktop/Data Specialisation/ExploreData")#
+log<-read.table("household_power_consumption.txt",sep=";",header=T)#
+#
+log$Date<-as.character(log$Date)#
+log$Time<-as.character(log$Time)#
+#
+library(chron)#
+#
+log$Date<-chron(dates.=log$Date,format=c(dates="d/m/y"))#
+log$Time<-chron(times.=log$Time,format=c("h:m:s"))#
+#
+Sel.Time <- subset(log, Date>="01/02/2007" & Date<="02/02/2007")#
+Sel.Time$Global_active_power<-as.character(Sel.Time$Global_active_power)#
+Sel.Time$Global_active_power<-as.numeric(Sel.Time$Global_active_power)#
+#
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+setwd("~/Desktop/Data Specialisation/ExploreData")#
+> log<-read.table("household_power_consumption.txt",sep=";",header=T)#
+> #
+> log$Date<-as.character(log$Date)#
+> log$Time<-as.character(log$Time)#
+> #
+> library(chron)#
+> #
+> log$Date<-chron(dates.=log$Date,format=c(dates="d/m/y"))#
+> log$Time<-chron(times.=log$Time,format=c("h:m:s"))#
+> #
+> Sel.Time <- subset(log, Date>="01/02/2007" & Date<="02/02/2007")#
+> Sel.Time$Global_active_power<-as.character(Sel.Time$Global_active_power)#
+> Sel.Time$Global_active_power<-as.numeric(Sel.Time$Global_active_power)#
+> #
+> hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+setwd("~/Desktop/Data Specialisation/ExploreData")
+log<-read.table("household_power_consumption.txt",sep=";",header=T)
+log$Date<-as.character(log$Date)
+log$Time<-as.character(log$Time)
+library(chron)
+log$Date<-chron(dates.=log$Date,format=c(dates="d/m/y"))
+log$Time<-chron(times.=log$Time,format=c("h:m:s"))
+Sel.Time <- subset(log, Date>="01/02/2007" & Date<="02/02/2007")
+Sel.Time$Global_active_power<-as.character(Sel.Time$Global_active_power)
+Sel.Time$Global_active_power<-as.numeric(Sel.Time$Global_active_power)
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts",mar=c(6,4.1,4.1,2.1))
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts",mar=c(10,4.1,4.1,2.1))
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+par(mar=c(10,4.1,4.1,2.1))
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts)")
+setwd("~/Desktop/Data Specialisation/ExploreData") #
+log<-read.table("household_power_consumption.txt",sep=";",header=T)#
+##Change the Date and Time column to date and time variables#
+log$Date<-as.character(log$Date)#
+log$Time<-as.character(log$Time)#
+library(chron)#
+log$Date<-chron(dates.=log$Date,format=c(dates="d/m/y"))#
+log$Time<-chron(times.=log$Time,format=c("h:m:s"))#
+## Select out the two days required Feb. 1 to Feb 2 2007#
+Sel.Time <- subset(log, Date>="01/02/2007" & Date<="02/02/2007")#
+##Change Global Active Power to a numeric#
+Sel.Time$Global_active_power<-as.character(Sel.Time$Global_active_power)#
+Sel.Time$Global_active_power<-as.numeric(Sel.Time$Global_active_power)#
+##Save the subsetted file to working directory for remaining plots#
+write.table("subset_household_power.txt")#
+##Set up for the histogram -- Margins#
+par(mar=c(6,4,4,2))#
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+Sel.Time
+head(Sel.Time)
+write.table(Sel.Time,"subset_household_power.txt")
+par(mar=c(9,4.1,4.1,2.1))#
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+par(mar=c(9,4.2,4.2,2.1))#
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+par(mar=c(9,5,4.2,2.1))
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")
+png(filename="plot1.png",width=480,height=480,units="px")
+dev.off()
+png(filename="plot1.png",width=480,height=480,units="px")#
+par(mar=c(9,5,4.2,2.1))#
+hist(Sel.Time$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (Kilowatts")#
+dev.off()
+setwd("~/Desktop/Data Specialisation/ExploreData")
+log<-read.table("subset_household_power.txt",sep=";",header=T)
+head(log)
+str(log)
+names(log)
+log<-read.table("subset_household_power.txt",header=T)
+log
+head(log)
+str(log)
+##Change the Date and Time column to date and time variables#
+log$Date<-as.character(log$Date)#
+log$Time<-as.character(log$Time)#
+library(chron)#
+log$Date<-chron(dates.=log$Date,format=c(dates="d/m/y"))#
+log$Time<-chron(times.=log$Time,format=c("h:m:s"))
+head(log)
+str(log)
+with(log,plot())
+with(log,plot(Date,Global_active_power))
+log<-read.table("household_power_consumption.txt",sep=";",header=T)
+log$Date<-as.character(log$Date)#
+log$Time<-as.character(log$Time)
+library(chron)
+log$Date<-chron(dates.=log$Date,format=c(dates="d/m/y"))#
+log$Time<-chron(times.=log$Time,format=c("h:m:s"))
+Sel.Time <- subset(log, Date>="01/02/2007" & Date<="02/02/2007")
+Sel.Time$Global_active_power<-as.character(Sel.Time$Global_active_power)#
+Sel.Time$Global_active_power<-as.numeric(Sel.Time$Global_active_power)
+with(Sel.Time,Plot(Date,Global_active_power))
+with(Sel.Time,plot(Date,Global_active_power))
+with(Sel.Time,plot(Time,Global_active_power))
+?plot
+with(Sel.Time,plot(Time,Global_active_power,type="l"))
+ds$Date <- strptime(paste(ds$Date,ds$Time), "%d/%m/%Y %H:%M:%S")
+log$Date <- strptime(paste(log$Date,log$Time), "%d/%m/%Y %H:%M:%S")
+head(log)
+str(log)
+Sel.Time <- subset(log, Date>="01/02/2007" & Date<="02/02/2007")
+head(Sel.Time)
+Sel.Time <- subset(log, Date>="0007-02-01" & Date<="0007-02-02")
+head(Sel.Time)
+log<-read.table("household_power_consumption.txt",sep=";",header=T)
+log$Date <- strptime(paste(log$Date,log$Time), "%d/%m/%Y %H:%M:%S")
+head(log)
+Sel.Time <- subset(log, Date>="01/02/2007" & Date<="02/02/2007")
+head(Sel.Time)
+Sel.Time
+log<-read.table("household_power_consumption.txt",sep=";",header=T)
+ds<-log
+head(ds)
+ds$Date<-as.date(ds$Date)
+ds$Date<-as.date(ds$Date)
+ds$Date<-as.Date(ds$Date)
+head(ds)
+str(ds)
+?as.date
+?as.Date
+str(as.Date)
+ds<-log
+ds$Date<-as.Date(ds$Date,format="%d/%m/%Y")
+head(ds)
+head(log)
+ds$Date<-as.Date(ds$Date,format="%Y/%m/%d")
+log(ds)
+ds<-log
+ds$Date<-as.Date(ds$Date,format="%Y/%m/%d")
+head(ds)
+ds<-log
+ds$Date<-as.Date(ds$Date,format="%Y/%m/%d")
+head(ds)
+ds<-log
+ds$Date<-as.Date(ds$Date,format="%d/%m/%Y")
+head(ds)
+da<-ds
+head(da)
+Sel.Time<-subset(da,Date>="2007-02-01" & Date<="2007-02-02")
+head(Sel.Time)
+str(Sel.Date)
+str(Sel.Time)
+log<-read.table("household_power_consumption.txt",sep=";",header=T)
+ds<-log
+ds$Date<-as.Date(ds$Date,format="%d/%m/%Y")
+head(ds)
+Sel.Time<-subset(ds,Date>="2007-02-01" & Date<="2007-02-02")
+head(Sel.Time)
+Sel.Time$Date <- strptime(paste(Sel.Time$Date,Sel.Time$Time), "%d/%m/%Y %H:%M:%S")
+head(Sel.Time)
+Sel.Time<-subset(ds,Date>="2007-02-01" & Date<="2007-02-02")
+Sel.Time$Date <- strptime(paste(Sel.Time$Date,Sel.Time$Time), "%Y/%m/%d %H:%M:%S")
+head(Sel.Time)
+Sel.Time<-subset(ds,Date>="2007-02-01" & Date<="2007-02-02")
+head(Sel.Time)
+str(Sel.Time)
+new<-Sel.Time
+?strptime
+new$Time<-as.character(new$Time)
+new$Date <- strptime(paste(new$Date,new$Time), "%d/%m/%Y %H:%M:%S")
+head(new)
+new<-Sel.Time
+new$Time<-as.character(new$Time)
+str(new)
+new$Global_active_power<-as.character(new$Global_active_power)
+str(new)
+new$Global_active_power<-as.numeric(new$Global_acive_power)
+new$Global_active_power<-as.numeric(new$Global_active_power)
+hist(new$Global_active_power)
+new$Time<-strptime(new$Time)
+new$Time<-strptime(new$Time,"%H:%M:%S")
+str(new)
+new$Date<-as.character(new$Date)
+str(new)
+new<-Sel.Time
+str(Sel.Time)
+new$Date<-as.character(new$Date)
+new$Time<-as.character(new$Time)
+str(new)
+new$Date <- strptime(paste(new$Date,new$Time), "%Y/%m/%d %H:%M:%S")
+head(new)
+new<-Sel.Time
+new$Date<-as.character(new$Date)
+new$Time<-as.character(new$Time)
+head(new)
+new
+head(new)
+str(new)
+new$Date<-paste(new$Date,new$Time,sep=" ")
+head(new)
+a<-new
+str(a)
+a$Date <- strptime(a$Date, "%Y/%m/%d %H:%M:%S")
+head(a)
+?strptime
+head(new)
+a<-new
+a$Date <- strptime(a$Date, "%Y-%m-%d %H:%M:%S")
+head(a)
+str(a)
+a$Global_active_power<-as.character(a$Global_active_power)
+a$Global_active_power<-as.numeric(a$Global_active_power)
+str(a)
+with(a,plot(Date,Global_active_power))
+with(a,plot(Date,Global_active_power,type="l"))
+par(mar=c(9,5,5,3))
+with(a,plot(Date,Global_active_power,type="l"))
+with(a,plot(Date,Global_active_power,type="l",ylab="Global Active Power (kilowatts)"))
+log<-read.table("household_power_consumption.txt",sep=";",header=T)
+log$Date<-as.Date(log$Date,format="%d/%m/%Y")
+Sel.Time<-subset(ds,Date>="2007-02-01" & Date<="2007-02-02")
+str(log)
+Sel.Time<-subset(log,Date>="2007-02-01" & Date<="2007-02-02")
+new<-Sel.Time
+new$Date<-as.character(new$Date)#
+ new$Time<-as.character(new$Time)
+new$Date<-paste(new$Date,new$Time,sep=" ")
+new$Date <- strptime(new$Date, "%Y-%m-%d %H:%M:%S")
+new$Global_active_power<-as.character(new$Global_active_power)#
+ new$Global_active_power<-as.numeric(new$Global_active_power)
+par(mar=c(9,5,5,3))#
+ with(a,plot(Date,Global_active_power,type="l",ylab="Global Active Power (kilowatts)"))
+par(mar=c(9,5,5,3))#
+ with(a,plot(Date,Global_active_power,type="l",ylab="Global Active Power (kilowatts)",xlab=""))
